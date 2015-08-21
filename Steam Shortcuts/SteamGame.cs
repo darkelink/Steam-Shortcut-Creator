@@ -24,6 +24,11 @@ namespace Steam_Shortcuts
             this.installDir = installDir;
         }
 
+        public static void ChangeDir(string dir)
+        {
+            steamDir = dir;
+        }
+
         public string[] FindExecutables()
         {
             return Directory.GetFiles(getInstalledDir(), "*.exe");
