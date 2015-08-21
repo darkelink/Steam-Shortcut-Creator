@@ -55,5 +55,10 @@ namespace Steam_Shortcuts
             return steamDir + @"steamapps\common\" + installDir;
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

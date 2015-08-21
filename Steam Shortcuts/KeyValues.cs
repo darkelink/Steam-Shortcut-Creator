@@ -15,25 +15,17 @@ namespace Steam_Shortcuts
         public static Dictionary<string, object> ReadFile(string path)
         {
             Dictionary<string, object> values = new Dictionary<string, object>();
-            try
-            {
-                StreamReader reader = new StreamReader(path);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return new Dictionary<string, object>();
+            StreamReader reader = new StreamReader(path);
+            return ParseValues(reader, values);
         }
 
 
         public static Dictionary<string, object> ParseValues(StreamReader reader, Dictionary<string, object> values)
         {
-            char ch = (char)reader.Read();
-            if (ch == '"')
-            {
-                string key = parseString(reader);
+            char ch;
 
+            do
+            {
                 do
                 {
                     ch = (char)reader.Read();
@@ -41,18 +33,24 @@ namespace Steam_Shortcuts
 
                 if (ch == '"')
                 {
-                    values.Add(key, parseString(reader));
+                    string key = parseString(reader);
+                    do
+                    {
+                        ch = (char)reader.Read();
+                    } while (whitespace.Contains(ch));
+
+                    if (ch == '"')
+                    {
+                        values.Add(key, parseString(reader));
+                    }
+                    else if (ch == '{')
+                    {
+                        values.Add(key, ParseValues(reader, new Dictionary<string, object>()));
+                    }
                 }
-                else if (ch == '{')
-                {
-                    values.Add(key, ParseValues(reader, new Dictionary<string, object>()));
-                }
-            }
-            else if (ch == '}')
-            {
-                return values;
-            }
-            else throw new FileFormatException("Encountered unexpected character: " + ch);
+            }  while (ch != '}' && !reader.EndOfStream);
+
+            
             return values;
         }
 
@@ -60,7 +58,7 @@ namespace Steam_Shortcuts
         private static string parseString(StreamReader reader)
         {
             StringBuilder token = new StringBuilder();
-            char ch = (char)reader.Read();
+            char ch;
 
             while ((ch = (char)reader.Read()) != '"')
             {

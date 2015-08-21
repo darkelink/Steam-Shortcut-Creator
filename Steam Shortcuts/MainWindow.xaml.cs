@@ -23,6 +23,7 @@ namespace Steam_Shortcuts
         public MainWindow()
         {
             InitializeComponent();
+            listBox.ItemsSource = SteamDB.GetGames();
         }
     }
 }
