@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Steam_Shortcuts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Steam Shortcut Creator" Height="350" Width="525">
     <Grid>
-        <ListBox x:Name="listBox" />
+        <ListBox x:Name="listBox" Margin="0,0,0,25" MouseDoubleClick="listBox_MouseDoubleClick"/>
+        <Button x:Name="button" Content="Settings" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="80" Click="settings_btn"/>
+        <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="80" Height="25" Click="refresh_Click"/>
 
     </Grid>
 </Window>

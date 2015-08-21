@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="steamDir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Steam\</Value>
+      <Value Profile="(Default)">C:\Program Files (x86)\Steam</Value>
+    </Setting>
+    <Setting Name="shortcutDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam</Value>
     </Setting>
   </Settings>
 </SettingsFile>

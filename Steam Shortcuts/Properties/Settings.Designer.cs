@@ -25,13 +25,25 @@ namespace Steam_Shortcuts.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Steam\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Steam")]
         public string steamDir {
             get {
                 return ((string)(this["steamDir"]));
             }
             set {
                 this["steamDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Steam")]
+        public string shortcutDir {
+            get {
+                return ((string)(this["shortcutDir"]));
+            }
+            set {
+                this["shortcutDir"] = value;
             }
         }
     }

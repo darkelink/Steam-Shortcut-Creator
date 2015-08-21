@@ -1,0 +1,19 @@
+﻿<Window x:Class="Steam_Shortcuts.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Steam_Shortcuts"
+        mc:Ignorable="d"
+        Title="Settings" d:DesignHeight="180" ResizeMode="NoResize" Width="260" Height="180">
+    <Grid>
+        <Label x:Name="label" Content="Steam Directory&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Shortcut Directory&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="steam_txb" Margin="15,28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="195"/>
+        <TextBox x:Name="shortcut_txb" HorizontalAlignment="Left" Margin="15,80,0,0" VerticalAlignment="Top" Width="195"/>
+        <Button x:Name="steam_btn" Content="..." Margin="215,28,0,0" VerticalAlignment="Top" Click="steam_btn_Click" Height="18" HorizontalAlignment="Left" Width="20"/>
+        <Button x:Name="shortcut_btn" Content="..." HorizontalAlignment="Left" Height="18" Margin="215,80,0,0" VerticalAlignment="Top" Width="20" Click="shortcut_btn_Click"/>
+        <Button x:Name="ok_btn" Content="OK" Margin="157,116,0,0" Click="ok_btn_Click" IsDefault="True" HorizontalAlignment="Left" Width="78" Height="20" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

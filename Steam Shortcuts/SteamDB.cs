@@ -13,17 +13,21 @@ namespace Steam_Shortcuts
 
         public static List<SteamGame> GetGames()
         {
-            if (games != null) return games;
+            if (games == null) games = RefreshGames();
+            return games;
+        }
 
+        public static List<SteamGame> RefreshGames()
+        {
             games = new List<SteamGame>();
 
-            foreach (string manifestFile in Directory.GetFiles(Properties.Settings.Default.steamDir + "steamapps", "appmanifest_*.acf"))
+            foreach (string manifestFile in Directory.GetFiles(Properties.Settings.Default.steamDir + @"\steamapps", "appmanifest_*.acf"))
             {
                 Dictionary<string, object> gameManifest = (Dictionary<string, object>)KeyValues.ReadFile(manifestFile)["AppState"];
-                
+
                 games.Add(new SteamGame(
-                    int.Parse((string)gameManifest["appid"]), 
-                    (string)gameManifest["name"], 
+                    int.Parse((string)gameManifest["appid"]),
+                    (string)gameManifest["name"],
                     (string)gameManifest["installdir"]));
             }
 
